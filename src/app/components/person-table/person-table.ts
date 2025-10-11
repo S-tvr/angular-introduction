@@ -9,12 +9,12 @@ import { Person } from 'src/app/shared/interfaces/person';
 })
 export class PersonTable {
   @Input() personInput: Person | undefined
-  name = "Thanasis"
+  // name = "Thanasis"
 
-  person = {
-    givenName: "Thanasis",
-    surName: "Androutsos",
-    age: 20,
-    email: "Thanasis@aueb.gr"
-  }
+  // person = {
+  //   givenName: "Thanasis",
+  //   surName: "Androutsos",
+  //   age: 20,
+  //   email: "Thanasis@aueb.gr"
+  // }
 }
