@@ -44,5 +44,13 @@
 
   </div>
 
+  <!-- Angular template syntax to run for -->
+  <h4>{{"@for"}}Directive Example</h4>
+  <div class="d-flex flex-wrap gap-5 text-nowrap gap-2">
+    @for (user of users; track user) {
+      <app-person-table [personInput]="user"></app-person-table>
+    }
+  </div>
+
 </div>
 
