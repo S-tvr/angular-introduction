@@ -1,12 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 import { PersonTable } from './components/person-table/person-table';
 import { Person } from './shared/interfaces/person';
 import { EventBindExample } from './components/event-bind-example/event-bind-example';
 
 @Component({
   selector: 'app-root',
-  imports: [PersonTable, EventBindExample],
+  imports: [RouterOutlet, RouterLink, PersonTable, EventBindExample],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
