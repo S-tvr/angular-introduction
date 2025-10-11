@@ -6,7 +6,7 @@ import { EventBindExample } from './components/event-bind-example/event-bind-exa
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PersonTable, EventBindExample],
+  imports: [PersonTable, EventBindExample],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
