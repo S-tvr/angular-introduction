@@ -35,7 +35,12 @@ export class SimpleDatatable {
       }
     }
     console.log(this.sortOrder)
+  }
 
+  sortSign(sortKey: keyof EPerson) : string {
+    if (this.sortOrder[sortKey] === "asc") return '\u2191'
+    else if (this.sortOrder[sortKey] === "desc") return '\u2193'
+    else return '';
   }
 
   onPersonClicked(person: EPerson) {
