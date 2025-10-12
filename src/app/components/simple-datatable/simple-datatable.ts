@@ -9,4 +9,8 @@ import { EPerson } from 'src/app/shared/interfaces/eperson';    // so that I can
 })
 export class SimpleDatatable {
   @Input() data: EPerson[] | undefined
+
+  onPersonClicked(person: EPerson) {
+    console.log("Person clicked: ", person)
+  }
 }
