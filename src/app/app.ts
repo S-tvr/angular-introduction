@@ -7,7 +7,7 @@ import { ListGroupMenu } from './components/list-group-menu/list-group-menu';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, ListGroupMenu, PersonTable, EventBindExample],
+  imports: [RouterOutlet, RouterLink, ListGroupMenu],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
