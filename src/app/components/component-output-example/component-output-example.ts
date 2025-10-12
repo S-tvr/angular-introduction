@@ -15,6 +15,9 @@ export class ComponentOutputExample {
     console.log("Component Output", person)
     alert(this.personTemplate(person))
   }
+    // Normally you don't run alert() to show the message. 
+    // You either use bootstrap's modal component or Google's material-design 
+  
 
   personTemplate(person: EPerson) {
     return `
