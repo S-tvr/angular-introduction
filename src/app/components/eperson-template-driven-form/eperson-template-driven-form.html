@@ -59,6 +59,6 @@
     [disabled]="eForm.invalid"
     (click)="onSubmit(eForm.value)"
     >Submit</button>
-    <button>Set value</button>
+    <button (click)="onSetValue()">Set value</button>
     <!-- {{eForm.value | json}} -->
 </div>
