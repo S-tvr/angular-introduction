@@ -4,6 +4,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { EPerson } from 'src/app/shared/interfaces/eperson';
 
 @Component({
   selector: 'app-eperson-template-driven-form',
@@ -12,11 +14,14 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    CommonModule
   ],
   templateUrl: './eperson-template-driven-form.html',
   styleUrl: './eperson-template-driven-form.css'
 })
 export class EpersonTemplateDrivenForm {
-
+  onSubmit(value: EPerson) {
+    console.log(value)
+  }
 }

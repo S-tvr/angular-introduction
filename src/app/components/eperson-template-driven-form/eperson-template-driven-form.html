@@ -1,1 +1,64 @@
-<p>eperson-template-driven-form works!</p>
+<div class="d-flex flex-column ">
+    <h5>New Person Form</h5>
+    <form #eForm="ngForm" class="d-flex flex-column">
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+           <input
+           matInput ngModel required type="text" name="givenName" #givenName="ngModel"
+           /> 
+           <mat-error>First name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input
+                matInput required type="text" name="surName"
+                ngModel #surname="ngModel"
+            >
+            <mat-error>Last Name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input 
+            ngModel #age="ngModel"
+            matInput required type="number" name="age" min="18" max="100">
+            <mat-error>Age is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput 
+            required 
+            type="text"
+            pattern="[a-zA-Z0-9\.\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}" 
+            name="email"
+            ngModel 
+            #email="ngModel"
+            >
+            @if (email.errors && email.errors['required']) {
+            <mat-error>Email is required</mat-error>}
+            @if (email.errors && email.errors['pattern']) {
+                <mat-error>Invalid email</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Education</mat-label>
+            <mat-select required name="education" ngModel #education="ngModel">
+                <mat-option value="Some college, no degree">Some college, no degree</mat-option>
+                <mat-option value="Master's Degree">Master's Degree</mat-option>
+                <mat-option value="Bachelor's Degree">Bachelor Degree</mat-option>
+                <mat-option value="No formal education">No formal education</mat-option>
+            </mat-select>
+            <mat-error>Education is required</mat-error>
+        </mat-form-field>
+
+    </form>
+    <button mat-flat-button color="primary"
+    [disabled]="eForm.invalid"
+    (click)="onSubmit(eForm.value)"
+    >Submit</button>
+    <button>Set value</button>
+    <!-- {{eForm.value | json}} -->
+</div>
