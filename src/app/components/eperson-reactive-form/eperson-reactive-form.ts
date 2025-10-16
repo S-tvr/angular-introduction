@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { EPerson } from 'src/app/shared/interfaces/eperson';
 
 @Component({
   selector: 'app-eperson-reactive-form',
@@ -33,4 +34,21 @@ export class EpersonReactiveForm {
     education: new FormControl("", Validators.required)
   })
 
+  onSubmit(data: any) {
+    console.log("Data: ", data)
+    console.log("givenName: ", this.form.controls.givenName.value)
+    // OR console.log("givenName: ", this.form.controls['givenName'].value)
+
+
+  }
+
+  onSetValue() {
+    this.form.setValue({
+      givenName: "kostas",
+      surName: "lallakis",
+      age: "27",
+      email: "ddd@gamil.com",
+      education: "Associate's Degree"
+    })
+  }
 }
