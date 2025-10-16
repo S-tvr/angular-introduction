@@ -1,1 +1,43 @@
-<p>eperson-reactive-form works!</p>
+<div class="d-flex flex-column">
+    <h5>New Person Form</h5>
+    <form class="d-flex flex-column">
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput>
+            <mat-error>First name is a required field.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput>
+            <mat-error>Last name is a required field.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input type="text" matInput>
+            <mat-error>Age is missing or invalid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="text" matInput>
+            <mat-error>Emails is missing or invalid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Education</mat-label>
+            <mat-select>
+                <mat-option value="Some college, no Degree">Some college, no degree</mat-option>
+                <mat-option value="Master's Degree">Master's Degree</mat-option>
+                <mat-option value="Bachelor's Degree">Bachelor's Degree</mat-option>
+                <mat-option value="Associate's Degree">Associate's Degree</mat-option>
+            </mat-select>
+            <mat-error>Education is required.</mat-error>
+        </mat-form-field>
+    </form>
+    <button
+    mat-flat-button
+    color="primary"
+    >
+    Submit
+    </button>
+    <button>Set Value</button>
+
+</div>
