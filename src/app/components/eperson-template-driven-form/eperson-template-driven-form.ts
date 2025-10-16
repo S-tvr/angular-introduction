@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -22,12 +22,14 @@ import { EPerson } from 'src/app/shared/interfaces/eperson';
 })
 export class EpersonTemplateDrivenForm {
   @ViewChild('eForm', {static: false}) form:NgForm | undefined
+  @Output() person = new EventEmitter<EPerson>()
 
   onSubmit(value: EPerson) {
     console.log(value)
     console.log(this.form)
     console.log(this.form?.form.get("givenName")?.value)
     console.log(this.form?.form.controls["surName"].value)
+    this.person.emit(value)
   }
 
   onSetValue() {
