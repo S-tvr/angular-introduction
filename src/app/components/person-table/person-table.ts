@@ -37,4 +37,5 @@ export class PersonTable {
   //   age: 20,
   //   email: "Thanasis@aueb.gr"
   // }
+  
 }
