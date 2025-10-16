@@ -34,9 +34,40 @@ export class EpersonReactiveForm {
     education: new FormControl("", Validators.required)
   })
 
-  onSubmit(data: any) {
-    console.log("Data: ", data)
-    console.log("givenName: ", this.form.controls.givenName.value)
+  // form = new FormGroup<{
+  //   givenName: FormControl<string>,
+  //   surName:FormControl<string>,
+  //   email:FormControl<string>,
+  //   age:FormControl<number>,
+  //   education:FormControl<string>
+  // }>({
+  //   givenName: new FormControl('',{nonNullable:true, validators: Validators.required}),
+  //   surName: new FormControl('',{nonNullable:true, validators: Validators.required}),
+  //   age: new FormControl(18, { 
+  //     nonNullable:true, 
+  //     validators:[
+  //       Validators.required, 
+  //       Validators.min(18),
+  //       Validators.max(100)
+  //     ]}),
+  //    email: new FormControl('', {nonNullable:true, validators:[Validators.required, Validators.email]}),
+  //    education: new FormControl('', {nonNullable: true, validators: Validators.required})
+  // })
+
+  onSubmit() {
+    if(this.form.valid) {
+      console.log(this.form.value)
+      const person: EPerson = {
+        givenName: this.form.value.givenName ?? "",
+        surName: this.form.value.surName ?? "",
+        age: this.form.value.age ?? "",
+        email: this.form.value.email ?? "",
+        education: this.form.value.education ?? ""
+
+      }
+    }
+    // console.log("Data: ", data)
+    // console.log("givenName: ", this.form.controls.givenName.value)
     // OR console.log("givenName: ", this.form.controls['givenName'].value)
 
 
