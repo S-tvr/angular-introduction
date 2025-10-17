@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { EPerson } from 'src/app/shared/interfaces/eperson';    // so that I can use interface for check
 import { sortBy } from 'lodash-es'
 
@@ -10,7 +10,21 @@ import { sortBy } from 'lodash-es'
 })
 export class SimpleDatatable {
   @Input() data: EPerson[] | undefined
+  @Input() myData: boolean = true;
   @Output() personClicked = new EventEmitter<EPerson>()
+
+    epersonsData: EPerson[] = [];
+
+  ngOnChanges(changes: SimpleChanges){
+    if (changes['data'] && this.data) {
+      console.log("ngOnChanges", this.data);
+      this.epersonsData = this.data
+    }
+    if (changes['myData']) {
+      console.log("MyData")
+      // this.myFunction();
+    }
+  }
 
   sortOrder = {
     givenName: "none",
@@ -24,10 +38,10 @@ export class SimpleDatatable {
     console.log(sortKey)
     if (this.sortOrder[sortKey] === "asc") {
       this.sortOrder[sortKey] = "desc"
-      this.data = sortBy(this.data, sortKey).reverse()
+      this.epersonsData = sortBy(this.epersonsData, sortKey).reverse()
     } else {
       this.sortOrder[sortKey] = "asc"
-      this.data = sortBy(this.data, sortKey)
+      this.epersonsData = sortBy(this.epersonsData, sortKey)
     }
 
     for (let key in this.sortOrder) {
