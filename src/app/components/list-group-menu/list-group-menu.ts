@@ -16,6 +16,7 @@ export class ListGroupMenu {
     {text: "Simple Data Table Example", linkName: "simple-data-table-example"},
     {text: "Template Driven Form Example", linkName: "template-driven-form-example"},
     {text: "Reactive Form Example", linkName: "reactive-form-example"},
-    {text: "Http Client Example", linkName: "http-client-example"}
+    {text: "Http Client Example", linkName: "http-client-example"},
+    {text: "User Registration Example", linkName: "user-registration-example"}
   ]
 }

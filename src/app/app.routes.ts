@@ -8,6 +8,7 @@ import { ComponentOutputExample } from './components/component-output-example/co
 import { TemplateDrivenFormExample } from './components/template-driven-form-example/template-driven-form-example';
 import { ReactiveFormExample } from './components/reactive-form-example/reactive-form-example';
 import { HttpClientExample } from './components/http-client-example/http-client-example';
+import { UserRegistrationForBackend } from './components/user-registration-for-backend/user-registration-for-backend';
 
 export const routes: Routes = [
     {path:'welcome', component: Welcome},
@@ -19,5 +20,6 @@ export const routes: Routes = [
     {path: 'template-driven-form-example', component: TemplateDrivenFormExample},
     {path: 'reactive-form-example', component: ReactiveFormExample},
     {path: 'http-client-example' , component: HttpClientExample},
+    {path: 'user-registration-example', component: UserRegistrationForBackend},
     {path: '', redirectTo:'/welcome', pathMatch:'full'}
 ];
