@@ -15,6 +15,7 @@ export class ListGroupMenu {
     {text: "Event Bind Example", linkName: "event-bind-example"},
     {text: "Simple Data Table Example", linkName: "simple-data-table-example"},
     {text: "Template Driven Form Example", linkName: "template-driven-form-example"},
-    {text: "Reactive Form Example", linkName: "reactive-form-example"}
+    {text: "Reactive Form Example", linkName: "reactive-form-example"},
+    {text: "Http Client Example", linkName: "http-client-example"}
   ]
 }

@@ -7,6 +7,7 @@ import { SimpleDatatableExample } from './components/simple-datatable-example/si
 import { ComponentOutputExample } from './components/component-output-example/component-output-example';
 import { TemplateDrivenFormExample } from './components/template-driven-form-example/template-driven-form-example';
 import { ReactiveFormExample } from './components/reactive-form-example/reactive-form-example';
+import { HttpClientExample } from './components/http-client-example/http-client-example';
 
 export const routes: Routes = [
     {path:'welcome', component: Welcome},
@@ -17,5 +18,6 @@ export const routes: Routes = [
     {path: 'simple-data-table-example', component: SimpleDatatableExample},
     {path: 'template-driven-form-example', component: TemplateDrivenFormExample},
     {path: 'reactive-form-example', component: ReactiveFormExample},
+    {path: 'http-client-example' , component: HttpClientExample},
     {path: '', redirectTo:'/welcome', pathMatch:'full'}
 ];
