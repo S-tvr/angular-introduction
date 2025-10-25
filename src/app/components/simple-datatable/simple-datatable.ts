@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { EPerson } from 'src/app/shared/interfaces/eperson';    // so that I can use interface for check
 import { sortBy } from 'lodash-es'
 
@@ -8,7 +8,7 @@ import { sortBy } from 'lodash-es'
   templateUrl: './simple-datatable.html',
   styleUrl: './simple-datatable.css'
 })
-export class SimpleDatatable {
+export class SimpleDatatable implements OnChanges{
   @Input() data: EPerson[] | undefined
   @Input() myData: boolean = true;
   @Output() personClicked = new EventEmitter<EPerson>()
