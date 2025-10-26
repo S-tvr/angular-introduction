@@ -16,7 +16,19 @@ export class UserService {
   router = inject(Router)
   user$ = signal<LoggedInUser | null>(null)
 
+  // A constructor is a special method in a class that runs automatically when you create an instance of that class.
+  // thats why I use this snippet of code inside a constructor
   constructor () {
+    const access_token = localStorage.getItem('access_token')
+    if (access_token) {
+      const decodedTokenSubject = jwtDecode(access_token) as unknown as LoggedInUser
+      this.user$.set({
+        username: decodedTokenSubject.username,
+        email: decodedTokenSubject.email,
+        roles: decodedTokenSubject.roles
+      })
+    }
+
     effect(() => {
       if(this.user$()) {
         console.log("Effect-> User logged in", this.user$()?.username)
