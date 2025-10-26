@@ -15,6 +15,11 @@ import { User } from 'src/app/shared/interfaces/user';
 export class UserRegistrationForBackend {
   userService = inject(UserService)
 
+  registrationStatus: {success: boolean, message: string} = {
+    success: false,
+    message: "Not attempted yet"
+  }
+
   form = new FormGroup({
     username: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
@@ -61,9 +66,11 @@ export class UserRegistrationForBackend {
     .subscribe({
       next: (response) => {
         console.log("user saved", response)
+        this.registrationStatus = {success: true, message: "User registered"}
       },
       error: (response) => {
         console.log("user not saved", response)
+        this.registrationStatus = {success: false, message: response.data}
       }
     })
 
@@ -87,5 +94,10 @@ export class UserRegistrationForBackend {
         }
       })
     }
+  }
+
+  registerAnother() {
+    this.form.reset()
+    this.registrationStatus = {success: false, message: "Not attempted yet"}
   }
 }
