@@ -27,12 +27,12 @@ export class UserLogin {
     this.userService.loginUser(credentials)
     .subscribe({
       next: (response) => {
-        console.log("Logged in", response)
+        console.log("Response from backend ->", response)
         const access_token = response.data
         localStorage.setItem('access_token', access_token)
 
         const decodedTokenSubject = jwtDecode(access_token) as unknown as LoggedInUser
-        console.log(decodedTokenSubject)
+        console.log("Decode the access_token ->", decodedTokenSubject)
 
         this.userService.user$.set({
           username: decodedTokenSubject.username,
