@@ -25,6 +25,8 @@ export class UserLogin {
     .subscribe({
       next: (response) => {
         console.log("Logged in", response)
+        const access_token = response.data
+        localStorage.setItem('access_token', access_token)
       },
 
       error: (error) => {
