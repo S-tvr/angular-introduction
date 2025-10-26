@@ -4,10 +4,11 @@ import { PersonTable } from './components/person-table/person-table';
 import { Person } from './shared/interfaces/person';
 import { EventBindExample } from './components/event-bind-example/event-bind-example';
 import { ListGroupMenu } from './components/list-group-menu/list-group-menu';
+import { Navbar } from './components/navbar/navbar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, ListGroupMenu],
+  imports: [RouterOutlet, RouterLink, ListGroupMenu, Navbar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
