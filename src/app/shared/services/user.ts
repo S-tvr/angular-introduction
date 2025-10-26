@@ -1,7 +1,7 @@
-import { Injectable,inject } from '@angular/core';
+import { Injectable,inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
-import { User, Credentials } from '../interfaces/user';
+import { User, Credentials, LoggedInUser } from '../interfaces/user';
 
 const API_URL = `${environment.apiURL}/api/users`
 const API_URL_AUTH = `${environment.apiURL}/api/auth`
@@ -11,6 +11,8 @@ const API_URL_AUTH = `${environment.apiURL}/api/auth`
 })
 export class UserService {
   http: HttpClient = inject(HttpClient)
+
+  user$ = signal<LoggedInUser | null>(null)
 
   registerUser(user : User) {
     return this.http.post<{status:boolean, data:User}>(
