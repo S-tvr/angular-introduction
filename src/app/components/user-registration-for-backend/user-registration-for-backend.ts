@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from 'src/app/shared/services/user';
+import { User } from 'src/app/shared/interfaces/user';
 
 @Component({
   selector: 'app-user-registration-for-backend',
@@ -42,9 +43,30 @@ export class UserRegistrationForBackend {
     return null
   }
 
-  onSubmit() {
-    const data = this.form.value
+ onSubmit(){
+    // const data = this.form.value as User;
+    const data: User = {
+      'username': this.form.get('username')?.value || '',
+      'password': this.form.get('password')?.value || '',
+      'name': this.form.get('name')?.value || '',
+      'surname': this.form.get('surname')?.value || '',
+      'email':this.form.get('email')?.value || '',
+      'address': {
+        'area':this.form.controls.address.controls.area?.value || '',
+        'road': this.form.controls.address.controls.road?.value || ''
+      }
+    }
     console.log(data)
+    this.userService.registerUser(data)
+    .subscribe({
+      next: (response) => {
+        console.log("user saved", response)
+      },
+      error: (response) => {
+        console.log("user not saved", response)
+      }
+    })
+
   }
 
   check_duplicate_email() {
