@@ -14,7 +14,7 @@ export class Navbar {
   user = this.userService.user$
 
   logout() {
-    console.log("Logout")
+    this.userService.logoutUser()
   }
 
 }
