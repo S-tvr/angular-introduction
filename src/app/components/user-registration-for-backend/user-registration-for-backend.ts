@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
+import { UserService } from 'src/app/shared/services/user';
 
 @Component({
   selector: 'app-user-registration-for-backend',
@@ -12,6 +12,8 @@ import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validator
   styleUrl: './user-registration-for-backend.css'
 })
 export class UserRegistrationForBackend {
+  userService = inject(UserService)
+
   form = new FormGroup({
     username: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
@@ -43,5 +45,25 @@ export class UserRegistrationForBackend {
   onSubmit() {
     const data = this.form.value
     console.log(data)
+  }
+
+  check_duplicate_email() {
+    const email = this.form.get("email")?.value
+
+    if (email) {
+      this.userService.check_duplicate_email(email)
+      .subscribe({
+        next: (response) => {
+          console.log(response)
+          this.form.get("email")?.setErrors(null)
+        },
+        error: (response) => {
+          console.log(response)
+          const message = response.data
+          console.log(message)
+          this.form.get("email")?.setErrors({duplicateEmail: true})
+        }
+      })
+    }
   }
 }
