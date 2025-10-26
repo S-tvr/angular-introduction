@@ -1,4 +1,4 @@
-import { Injectable,inject, signal } from '@angular/core';
+import { Injectable,inject, signal, effect } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { User, Credentials, LoggedInUser } from '../interfaces/user';
@@ -14,6 +14,16 @@ export class UserService {
   http: HttpClient = inject(HttpClient)
   router = inject(Router)
   user$ = signal<LoggedInUser | null>(null)
+
+  constructor () {
+    effect(() => {
+      if(this.user$()) {
+        console.log("Effect-> User logged in", this.user$()?.username)
+      } else {
+        console.log("Effect-> No user logged in")
+      }
+    })
+  }
 
   registerUser(user : User) {
     return this.http.post<{status:boolean, data:User}>(
