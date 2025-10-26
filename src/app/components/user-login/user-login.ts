@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Credentials } from 'src/app/shared/interfaces/user';
+import { Credentials, LoggedInUser } from 'src/app/shared/interfaces/user';
 import { UserService } from 'src/app/shared/services/user';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-user-login',
@@ -27,6 +28,9 @@ export class UserLogin {
         console.log("Logged in", response)
         const access_token = response.data
         localStorage.setItem('access_token', access_token)
+
+        const decodedTokenSubject = jwtDecode(access_token) as unknown as LoggedInUser
+        console.log(decodedTokenSubject)
       },
 
       error: (error) => {
