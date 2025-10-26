@@ -2,4 +2,10 @@
     <a class="navbar-brand ms-3 cursor-pointer" role="button" routerLink="">
         CF - Angular Introduction
     </a>
+    @if (user()) {
+        <span class="me-3 d-flex gap-2 text-light">
+            Welcome, {{user()?.username}}
+            <mat-icon role="button" (click)="logout()">login</mat-icon>
+        </span>
+    }
 </nav>
