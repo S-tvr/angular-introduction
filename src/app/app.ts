@@ -8,7 +8,7 @@ import { Navbar } from './components/navbar/navbar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, ListGroupMenu, Navbar],
+  imports: [RouterOutlet, ListGroupMenu, Navbar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
