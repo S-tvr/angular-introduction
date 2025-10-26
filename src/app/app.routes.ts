@@ -11,6 +11,7 @@ import { HttpClientExample } from './components/http-client-example/http-client-
 import { UserRegistrationForBackend } from './components/user-registration-for-backend/user-registration-for-backend';
 import { UserLogin } from './components/user-login/user-login';
 import { authGuard } from './shared/guards/auth-guard';
+import { adminRoleGuard } from './shared/guards/admin-role-guard';
 
 export const routes: Routes = [
     {path:'welcome', component: Welcome},
@@ -22,7 +23,8 @@ export const routes: Routes = [
     {path: 'template-driven-form-example', component: TemplateDrivenFormExample},
     {path: 'reactive-form-example', component: ReactiveFormExample},
     {path: 'http-client-example' , component: HttpClientExample},
-    {path: 'user-registration-example', component: UserRegistrationForBackend, canActivate: [authGuard]},
+    {path: 'user-registration-example', component: UserRegistrationForBackend,
+        canActivate: [authGuard, adminRoleGuard]},
     {path: 'login', component: UserLogin},
     {path: '', redirectTo:'/welcome', pathMatch:'full'}
 ];
