@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Credentials, LoggedInUser } from 'src/app/shared/interfaces/user';
 import { UserService } from 'src/app/shared/services/user';
 import { jwtDecode } from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -12,6 +13,7 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class UserLogin {
   userService = inject(UserService)
+  router = inject(Router)
 
   form = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -31,6 +33,7 @@ export class UserLogin {
 
         const decodedTokenSubject = jwtDecode(access_token) as unknown as LoggedInUser
         console.log(decodedTokenSubject)
+        this.router.navigate(['user-registration-example'])
       },
 
       error: (error) => {
