@@ -12,6 +12,7 @@ import { UserRegistrationForBackend } from './components/user-registration-for-b
 import { UserLogin } from './components/user-login/user-login';
 import { authGuard } from './shared/guards/auth-guard';
 import { adminRoleGuard } from './shared/guards/admin-role-guard';
+import { RestrictedContent } from './components/restricted-content/restricted-content';
 
 export const routes: Routes = [
     {path:'welcome', component: Welcome},
@@ -26,5 +27,6 @@ export const routes: Routes = [
     {path: 'user-registration-example', component: UserRegistrationForBackend,
         canActivate: [authGuard, adminRoleGuard]},
     {path: 'login', component: UserLogin},
+    {path: 'restricted-content', component: RestrictedContent},
     {path: '', redirectTo:'/welcome', pathMatch:'full'}
 ];
