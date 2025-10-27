@@ -43,39 +43,51 @@ export class UserService {
       `${API_URL}`, user
     )}
   
-    check_duplicate_email(email: string) {
-      return this.http.get<{status: boolean, data: User}>(`
-        ${API_URL}/check_duplicate_email/${email}`
-      )
-    }
+  check_duplicate_email(email: string) {
+    return this.http.get<{status: boolean, data: User}>(`
+      ${API_URL}/check_duplicate_email/${email}`
+    )
+  }
 
-    loginUser(credentials: Credentials) {
-      return this.http.post<{status: boolean, data: string}>(`
-        ${API_URL_AUTH}/login`, credentials)
-    }
+  loginUser(credentials: Credentials) {
+    return this.http.post<{status: boolean, data: string}>(`
+      ${API_URL_AUTH}/login`, credentials)
+  }
 
-    logoutUser(){
-      this.user$.set(null)
-      localStorage.removeItem("access_token")
-      this.router.navigate(["login"])
-    }
+  logoutUser(){
+    this.user$.set(null)
+    localStorage.removeItem("access_token")
+    this.router.navigate(["login"])
+  }
 
-    isTokenExpired() : boolean {
-      const token = localStorage.getItem('access_token')
-      if (!token) return true
-      
-      try {
-        const decoded = jwtDecode(token)
-        const exp = decoded.exp
-        const now = Math.floor(Date.now()/1000)
-        if (exp) {
-          return exp < now
-        } else {
-          return true
-        }
-
-      } catch (err) {
+  isTokenExpired() : boolean {
+    const token = localStorage.getItem('access_token')
+    if (!token) return true
+    
+    try {
+      const decoded = jwtDecode(token)
+      const exp = decoded.exp
+      const now = Math.floor(Date.now()/1000)
+      if (exp) {
+      return exp < now
+      } else {
         return true
       }
+
+    } catch (err) {
+      return true
     }
+  }
+
+  redirectToGoogleLogin() {
+    const googleClientID = "1009983840477-5kmu8spc2stkjk1ejov107pl87qo29dt.apps.googleusercontent.com"
+    const redirectUri = "http://localhost:3000/api/auth/google/callback"
+    const scope = "email profile"
+    const responseType = "code"
+    const accessType = "offline"
+
+    const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientID}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${encodeURIComponent(scope)}&access_type=${accessType}&prompt=consent`;
+    // const url = `https://accounts.google.com/o/oauth2/auth?client_id=${googleClientID}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}&access_type=${accessType}`
+    window.location.href = url
+  }
 }

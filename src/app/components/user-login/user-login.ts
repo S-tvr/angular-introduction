@@ -49,4 +49,9 @@ export class UserLogin {
       }
     })
   }
+
+  googleLogin() {
+    this.userService.redirectToGoogleLogin()
+  }
+
 }
